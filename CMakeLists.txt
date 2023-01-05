@@ -13,6 +13,7 @@ SET ( COMM_LINK_LIBRARIES pthread )
 
 SET ( LIBRARIES 
     display
+	input
 )
 
 FOREACH( LIB IN LISTS LIBRARIES)

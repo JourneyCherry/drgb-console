@@ -5,6 +5,18 @@
 
 class display
 {
+	public:
+		enum colors
+		{
+			black = 0,
+			red,
+			green,
+			yellow,
+			blue,
+			purple,
+			cyan,
+			white
+		};
 	private:
 		size_t width;
 		size_t height;
@@ -16,6 +28,9 @@ class display
 		void flush();
         void clear();
 		void draw_border(const char&);
+		void set_color(colors, colors);
 	private:
 		void move(const int&, const int&);
+		void set_color(int, int);
+		void clear_color();
 };
