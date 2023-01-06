@@ -43,20 +43,36 @@ void display::clear()
 	}
 }
 
-void display::draw_border(const char &ch)
+void display::draw_border()
 {
 	for(int i = 0;i<width;i++)
 	{
 		for(int j = 0;j<height;j++)
 		{
-			if(i == 0 || i == width-1 || j == 0 || j == height-1)
+			move(i, j);
+			int bits = 0;
+			if(i == 0)			bits |= 0b1000;	//left
+			if(i == width-1)	bits |= 0b0100;	//right
+			if(j == 0)			bits |= 0b0010;	//top
+			if(j == height-1)	bits |= 0b0001;	//bottom
+			switch(bits)
 			{
-				move(i, j);
-				printf("%c", ch);
+				case 0b1010:	printf("┌");	break;
+				case 0b1001:	printf("└");	break;
+				case 0b0110:	printf("┐");	break;
+				case 0b0101:	printf("┘");	break;
+				case 0b1000:
+				case 0b0100:
+					printf("│");
+					break;
+				case 0b0010:
+				case 0b0001:
+					printf("─");
+					break;
 			}
-		}
+		}	
 	}
-	move(0, height);
+	move(0, height+1);
 }
 
 void display::move(const int &x, const int &y)

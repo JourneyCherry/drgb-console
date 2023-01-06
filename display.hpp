@@ -27,7 +27,7 @@ class display
         void draw(const int&, const int&, const char*, ...);
 		void flush();
         void clear();
-		void draw_border(const char&);
+		void draw_border();
 		void set_color(colors, colors);
 	private:
 		void move(const int&, const int&);
